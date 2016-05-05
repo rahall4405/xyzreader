@@ -1,3 +1,5 @@
+
+<!-- based on DynamicServices Demo in class and standard template used by android studio for coordinator layout-->
 <com.example.xyzreader.ui.DrawInsetsFrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/draw_insets_frame_layout"
