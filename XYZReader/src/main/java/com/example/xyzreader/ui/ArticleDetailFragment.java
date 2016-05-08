@@ -109,7 +109,7 @@ public class ArticleDetailFragment extends Fragment implements
         mRootView = inflater.inflate(R.layout.fragment_article_detail, container, false);
         Toolbar toolbar = (Toolbar) mRootView.findViewById(R.id.detailtoolbar);
         getActivityCast().setSupportActionBar(toolbar);
-        getActivityCast().getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        //getActivityCast().getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 
         //getActivityCast().setSupportActionBar(toolbar);
