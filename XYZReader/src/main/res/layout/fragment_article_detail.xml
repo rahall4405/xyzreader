@@ -8,15 +8,14 @@
         android:id="@+id/app_bar_layout"
         android:layout_width="match_parent"
         android:layout_height="192dp"
+
         android:background="?colorPrimary">
 
         <android.support.design.widget.CollapsingToolbarLayout
             android:id="@+id/collapsing_toolbar_layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:collapsedTitleTextAppearance="@style/TextAppearance.AppCompat.Widget.ActionBar.Title.Inverse"
-            app:expandedTitleTextAppearance="@style/TextAppearance.AppCompat.Widget.ActionBar.Title.Inverse"
-            app:expandedTitleMarginStart="72dp"
+            android:theme="@style/AppTheme.AppBarOverlay"
             app:contentScrim="?attr/colorPrimary"
             app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
@@ -25,6 +24,7 @@
                 android:layout_height="match_parent"
                 app:layout_collapseMode="parallax"
                 android:scaleType="centerCrop"
+
                 android:id="@+id/photo"
                 />
 
@@ -32,17 +32,16 @@
             <android.support.v7.widget.Toolbar
                 android:id="@+id/app_bar"
                 android:layout_width="match_parent"
-                android:layout_height="?actionBarSize"
-                android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+                android:layout_height="?attr/actionBarSize"
+                app:layout_scrollFlags="scroll|enterAlways"
                 app:navigationIcon="@drawable/arrow_left"
-                app:contentInsetStart="72dp"
                 app:layout_collapseMode="pin" />
         </android.support.design.widget.CollapsingToolbarLayout>
     </android.support.design.widget.AppBarLayout>
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:nestedScrollingEnabled="true"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
@@ -50,7 +49,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="@dimen/detail_card_top_margin"
+
             android:background="#fff"
             android:elevation="2dp"
             android:maxWidth="@dimen/detail_card_max_width"
@@ -86,7 +85,8 @@
                     style="?android:attr/textAppearanceSmall"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="#8fff" />
+                    android:textSize="22sp"
+                    android:textColor="@color/ltgray" />
             </LinearLayout>
 
             <TextView
@@ -98,7 +98,7 @@
                 android:layout_marginRight="@dimen/detail_inner_horiz_margin"
                 android:lineSpacingMultiplier="@fraction/detail_body_line_spacing_multiplier"
                 android:paddingBottom="@dimen/detail_body_bottom_margin"
-                android:textColor="@color/ltgray"
+                android:textColor="#000000"
                 android:textColorLink="@color/colorAccent"
                 android:textSize="@dimen/detail_body_text_size" />
 

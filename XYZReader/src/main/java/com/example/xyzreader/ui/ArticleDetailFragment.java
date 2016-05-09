@@ -56,7 +56,7 @@ public class ArticleDetailFragment extends Fragment implements
     //private View mPhotoContainerView;
     private ImageView mPhotoView;
     //private int mScrollY;
-    private boolean mIsCard = false;
+
    // private int mStatusBarFullOpacityBottom;
 
     /**
@@ -82,7 +82,7 @@ public class ArticleDetailFragment extends Fragment implements
             mItemId = getArguments().getLong(ARG_ITEM_ID);
         }
 
-        mIsCard = getResources().getBoolean(R.bool.detail_is_card);
+        //mIsCard = getResources().getBoolean(R.bool.detail_is_card);
         //mStatusBarFullOpacityBottom = getResources().getDimensionPixelSize(
               //  R.dimen.detail_card_top_margin);
         setHasOptionsMenu(true);
@@ -107,7 +107,7 @@ public class ArticleDetailFragment extends Fragment implements
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
         mRootView = inflater.inflate(R.layout.fragment_article_detail, container, false);
-        Toolbar toolbar = (Toolbar) mRootView.findViewById(R.id.detailtoolbar);
+        Toolbar toolbar = (Toolbar) mRootView.findViewById(R.id.app_bar);
         getActivityCast().setSupportActionBar(toolbar);
         //getActivityCast().getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
@@ -169,19 +169,8 @@ public class ArticleDetailFragment extends Fragment implements
         //mDrawInsetsFrameLayout.setInsetBackground(mStatusBarColorDrawable);
     } */
 
-    static float progress(float v, float min, float max) {
-        return constrain((v - min) / (max - min), 0, 1);
-    }
 
-    static float constrain(float val, float min, float max) {
-        if (val < min) {
-            return min;
-        } else if (val > max) {
-            return max;
-        } else {
-            return val;
-        }
-    }
+
 
     private void bindViews() {
         if (mRootView == null) {
