@@ -11,6 +11,7 @@ import android.graphics.Rect;
 import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v4.app.ShareCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.graphics.Palette;
@@ -29,6 +30,7 @@ import android.widget.Toast;
 
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.ImageLoader;
+import com.bumptech.glide.Glide;
 import com.example.xyzreader.R;
 import com.example.xyzreader.data.ArticleLoader;
 
@@ -107,9 +109,23 @@ public class ArticleDetailFragment extends Fragment implements
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
         mRootView = inflater.inflate(R.layout.fragment_article_detail, container, false);
-        Toolbar toolbar = (Toolbar) mRootView.findViewById(R.id.app_bar);
+        mPhotoView = (ImageView) mRootView.findViewById(R.id.photo);
+
+        final Toolbar toolbar = (Toolbar) mRootView.findViewById(R.id.toolbar);
         getActivityCast().setSupportActionBar(toolbar);
-        //getActivityCast().getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getActivityCast().getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        toolbar.setNavigationOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                //Toast.makeText(getActivity(), "Back clicked!",     Toast.LENGTH_SHORT).show();
+                getActivityCast().finish();
+            }
+        });
+        CollapsingToolbarLayout collapsingToolbar =
+                (CollapsingToolbarLayout) mRootView.findViewById(R.id.collapsing_toolbar_layout);
+        collapsingToolbar.setTitle(getActivityCast().getString(R.string.app_name));
+       // getActivityCast().getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 
         //getActivityCast().setSupportActionBar(toolbar);
@@ -134,7 +150,7 @@ public class ArticleDetailFragment extends Fragment implements
             }
         });*/
 
-        mPhotoView = (ImageView) mRootView.findViewById(R.id.photo);
+
        // mPhotoContainerView = mRootView.findViewById(R.id.photo_container);
 
       //  mStatusBarColorDrawable = new ColorDrawable(0);
@@ -181,7 +197,7 @@ public class ArticleDetailFragment extends Fragment implements
         TextView bylineView = (TextView) mRootView.findViewById(R.id.article_byline);
         bylineView.setMovementMethod(new LinkMovementMethod());
         TextView bodyView = (TextView) mRootView.findViewById(R.id.article_body);
-        bodyView.setTypeface(Typeface.createFromAsset(getResources().getAssets(), "Rosario-Regular.ttf"));
+        //bodyView.setTypeface(Typeface.createFromAsset(getResources().getAssets(), "Rosario-Regular.ttf"));
 
         if (mCursor != null) {
             mRootView.setAlpha(0);
@@ -197,7 +213,10 @@ public class ArticleDetailFragment extends Fragment implements
                             + mCursor.getString(ArticleLoader.Query.AUTHOR)
                             + "</font>"));
             bodyView.setText(Html.fromHtml(mCursor.getString(ArticleLoader.Query.BODY)));
-            ImageLoaderHelper.getInstance(getActivity()).getImageLoader()
+            Glide.with(getActivityCast())
+                    .load(mCursor.getString(ArticleLoader.Query.PHOTO_URL))
+                    .into(mPhotoView);
+            /*ImageLoaderHelper.getInstance(getActivity()).getImageLoader()
                     .get(mCursor.getString(ArticleLoader.Query.PHOTO_URL), new ImageLoader.ImageListener() {
                         @Override
                         public void onResponse(ImageLoader.ImageContainer imageContainer, boolean b) {
@@ -216,7 +235,7 @@ public class ArticleDetailFragment extends Fragment implements
                         public void onErrorResponse(VolleyError volleyError) {
 
                         }
-                    });
+                    }); */
         } else {
             mRootView.setVisibility(View.GONE);
             titleView.setText("N/A");
