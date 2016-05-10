@@ -10,6 +10,7 @@ import android.graphics.Color;
 import android.graphics.Rect;
 import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v4.app.ShareCompat;
@@ -112,8 +113,8 @@ public class ArticleDetailFragment extends Fragment implements
         mPhotoView = (ImageView) mRootView.findViewById(R.id.photo);
 
         final Toolbar toolbar = (Toolbar) mRootView.findViewById(R.id.toolbar);
-        getActivityCast().setSupportActionBar(toolbar);
-        getActivityCast().getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        //getActivityCast().setSupportActionBar(toolbar);
+       // getActivityCast().getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         toolbar.setNavigationOnClickListener(new View.OnClickListener(){
             @Override
@@ -124,7 +125,8 @@ public class ArticleDetailFragment extends Fragment implements
         });
         CollapsingToolbarLayout collapsingToolbar =
                 (CollapsingToolbarLayout) mRootView.findViewById(R.id.collapsing_toolbar_layout);
-        collapsingToolbar.setTitle(getActivityCast().getString(R.string.app_name));
+        collapsingToolbar.setTitle(getActivityCast().getString(R.string.detail));
+
        // getActivityCast().getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 
@@ -197,7 +199,7 @@ public class ArticleDetailFragment extends Fragment implements
         TextView bylineView = (TextView) mRootView.findViewById(R.id.article_byline);
         bylineView.setMovementMethod(new LinkMovementMethod());
         TextView bodyView = (TextView) mRootView.findViewById(R.id.article_body);
-        //bodyView.setTypeface(Typeface.createFromAsset(getResources().getAssets(), "Rosario-Regular.ttf"));
+        bodyView.setTypeface(Typeface.createFromAsset(getResources().getAssets(), "Rosario-Regular.ttf"));
 
         if (mCursor != null) {
             mRootView.setAlpha(0);
@@ -215,6 +217,8 @@ public class ArticleDetailFragment extends Fragment implements
             bodyView.setText(Html.fromHtml(mCursor.getString(ArticleLoader.Query.BODY)));
             Glide.with(getActivityCast())
                     .load(mCursor.getString(ArticleLoader.Query.PHOTO_URL))
+                    .crossFade(200)
+                    .error(R.mipmap.ic_launcher)
                     .into(mPhotoView);
             /*ImageLoaderHelper.getInstance(getActivity()).getImageLoader()
                     .get(mCursor.getString(ArticleLoader.Query.PHOTO_URL), new ImageLoader.ImageListener() {
