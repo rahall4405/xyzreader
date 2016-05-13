@@ -22,4 +22,7 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
     <color name="ltgray">#ffe0e0e0</color>
+    <color name="meta_bar_background">#333</color>
+
+
 </resources>
