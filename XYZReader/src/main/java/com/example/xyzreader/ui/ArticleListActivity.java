@@ -53,12 +53,7 @@ public class ArticleListActivity extends AppCompatActivity implements
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_article_list);
 
-        if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            slide = (Slide) TransitionInflater.from(this).inflateTransition(R.transition.slide);
 
-            getWindow().setExitTransition(slide);
-
-        }
 
         //final View toolbarContainerView = findViewById(R.id.toolbar_container);
 
