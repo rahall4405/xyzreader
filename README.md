@@ -13,14 +13,19 @@ Android Developer Nanodegree Project 5
 - App uses images that are high quality, specific, and full bleed.
 - App uses fonts that are either the Android defaults, are complementary, and aren't otherwise distracting.
 
-### Enhancements 
-- tbd
-
 ### Installation
-- tbd
+Download the zip file and extract the contents.  From Android Studio, File - New  - Import Project. Then navigate to the top level of the xyzreader project and click Ok.
 
-### Issues 
-- tbd
+
+
+##Images
+
+![](./XYZReader/src/main/res/drawable/device_140124.png "")
+![](./XYZReader/src/main/res/drawable/device_140352.png "")
+![](./XYZReader/src/main/res/drawable/device_140437.png "")
+![](./XYZReader/src/main/res/drawable/device_140520.png "")
+![](./XYZReader/src/main/res/drawable/device_140709.png "")
+![](./XYZReader/src/main/res/drawable/device_140929.png "")
 
 ### License
 Licensed under the Apache License, Version 2.0 (the "License");
@@ -36,5 +41,4 @@ Licensed under the Apache License, Version 2.0 (the "License");
  limitations under the License.
  
  All libraries used are licensed under their own licensing agreement.
- ### Images
- - tbd
+ 
